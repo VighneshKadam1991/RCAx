@@ -26,13 +26,17 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: terraform init
+        run: cd RCAx
+             terraform init
 
       - name: Terraform Validate
-        run: terraform validate
+        run: cd RCAx 
+             terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: cd RCAx
+             terraform plan -out=tfplan
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+        run: cd RCAx
+             terraform apply -auto-approve tfplan
