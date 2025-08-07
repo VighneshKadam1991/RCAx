@@ -25,31 +25,18 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Show repo root
-        run: |
-          echo "At repo root:"
-          pwd
-          ls -la
-
-      - name: Show terraform folder
-        working-directory: terraform
-        run: |
-          echo "Inside terraform directory:"
-          pwd
-          ls -la
-
       - name: Terraform Init
-        working-directory:
+        working-directory: terraform
         run:  terraform init
 
       - name: Terraform Validate
-        working-directory: .
+        working-directory: terraform
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: .
+        working-directory: terraform
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
-        working-directory: .
+        working-directory: terraform
         run: terraform apply -auto-approve tfplan
